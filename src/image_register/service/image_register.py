@@ -2,6 +2,7 @@ from ..domain.models import ImageItem
 from ..infrastructure.image_vectorizer import ImageVectorizer
 from ..infrastructure.pinecone_client import PineconeClient
 
+
 class ImageRegisterService:
     def __init__(self, vectorizer: ImageVectorizer, pinecone_client: PineconeClient):
         self.vectorizer = vectorizer
@@ -11,7 +12,5 @@ class ImageRegisterService:
         """画像アイテムを登録"""
         vector = self.vectorizer.vectorize(item.image_path)
         self.pinecone_client.upsert(
-            vector_id=item.image_name,
-            vector=vector,
-            metadata=item.metadata
-        ) 
+            vector_id=item.image_name, vector=vector, metadata=item.metadata
+        )

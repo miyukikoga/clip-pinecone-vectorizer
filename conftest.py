@@ -10,6 +10,7 @@ from image_register.infrastructure.pinecone_client import PineconeClient
 # src ディレクトリへのパスを追加
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "src")))
 
+
 # 共通フィクスチャ
 @pytest.fixture
 def sample_item() -> ImageItem:
@@ -21,9 +22,10 @@ def sample_item() -> ImageItem:
             "title": "テスト画像",
             "category": "テストカテゴリ",
             "tags": ["テスト", "サンプル"],
-            "description": "テスト用の画像データ"
-        }
+            "description": "テスト用の画像データ",
+        },
     )
+
 
 @pytest.fixture
 def mock_vectorizer():
@@ -32,7 +34,8 @@ def mock_vectorizer():
     vectorizer.vectorize.return_value = np.array([0.1, 0.2, 0.3])
     return vectorizer
 
+
 @pytest.fixture
 def mock_pinecone_client():
     """Pinecone クライアントのモック"""
-    return Mock(spec=PineconeClient) 
+    return Mock(spec=PineconeClient)
