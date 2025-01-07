@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "image_path": "./images/example.jpg",
+      "image_name": "unique_image_id",
+      "metadata": {
+        "title": "アイテムタイトル",
+        "category": "カテゴリ",
+        "tags": ["タグ1", "タグ2"],
+        "description": "説明文"
+      }
+    }
+  ]
+}
