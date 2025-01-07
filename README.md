@@ -106,6 +106,15 @@ uv run pytest tests -v
 2. BDD スタイルのテスト記述
 3. 型ヒントの活用
 4. docstring によるドキュメント化
+5. コードフォーマット
+
+   ```bash
+   # コードの自動フォーマット
+   uv run ruff format .
+
+   # フォーマットチェック（CI用）
+   uv run ruff format . --check
+   ```
 
 ## 必要要件
 
@@ -117,3 +126,4 @@ uv run pytest tests -v
   - pinecone-client
   - python-dotenv
   - numpy
+  - ruff
