@@ -53,7 +53,7 @@ PINECONE_INDEX_NAME=your_index_name
 ### 2. 実行
 
 ```bash
-python src/main.py
+make run
 ```
 
 ## プロジェクト構造
@@ -85,7 +85,7 @@ python src/main.py
 テストの実行:
 
 ```bash
-uv run pytest tests -v
+make test
 ```
 
 ## アーキテクチャ
@@ -108,10 +108,7 @@ uv run pytest tests -v
 
    ```bash
    # コードの自動フォーマット
-   uv run ruff format .
-
-   # フォーマットチェック（CI用）
-   uv run ruff format . --check
+   make format
    ```
 
 ## 必要要件
