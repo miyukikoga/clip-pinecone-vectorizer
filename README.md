@@ -15,9 +15,7 @@ CLIP を使用して画像をベクトル化し、Pinecone に登録するシス
 ### 1. 環境構築
 
 ```bash
-uv venv
-source .venv/bin/activate # Windows: .venv\Scripts\activate
-uv pip install -r requirements.txt
+uv sync
 ```
 
 ### 2. 環境変数の設定
