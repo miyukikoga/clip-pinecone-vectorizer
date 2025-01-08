@@ -1,7 +1,6 @@
 import pytest
 from unittest.mock import Mock
 import numpy as np
-from pathlib import Path
 from image_register.domain.models import ImageItem
 from image_register.infrastructure.image_vectorizer import ImageVectorizer
 from image_register.infrastructure.pinecone_client import PineconeClient
