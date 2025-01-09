@@ -8,7 +8,7 @@ from image_register.repository.item_repository import ItemRepository
 from image_register.service.image_register import ImageRegisterService
 
 
-def main():
+def main() -> None:
     load_dotenv()
 
     # プロジェクトルートパスの取得
@@ -18,8 +18,8 @@ def main():
     # 依存オブジェクトの初期化
     vectorizer = ImageVectorizer()
     pinecone_client = PineconeClient(
-        api_key=os.getenv("PINECONE_API_KEY"),
-        index_name=os.getenv("PINECONE_INDEX_NAME"),
+        api_key=os.getenv("PINECONE_API_KEY", ""),
+        index_name=os.getenv("PINECONE_INDEX_NAME", ""),
     )
     repository = ItemRepository(str(data_file))
     service = ImageRegisterService(vectorizer, pinecone_client)

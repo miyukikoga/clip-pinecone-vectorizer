@@ -1,6 +1,8 @@
+from pathlib import Path
 import pytest
 from unittest.mock import Mock
 import numpy as np
+from numpy.typing import NDArray
 from image_register.domain.models import ImageItem
 from image_register.infrastructure.image_vectorizer import ImageVectorizer
 from image_register.infrastructure.pinecone_client import PineconeClient
@@ -11,35 +13,9 @@ from image_register.repository.item_repository import ItemRepository
 class TestImageRegistration:
     """画像登録システムの仕様"""
 
-    @pytest.fixture
-    def sample_item(self) -> ImageItem:
-        """テスト用の画像アイテムデータ"""
-        return ImageItem(
-            image_path="./images/test_image.jpg",
-            image_name="test_image_001",
-            metadata={
-                "title": "テスト画像",
-                "category": "テストカテゴリ",
-                "tags": ["テスト", "サンプル"],
-                "description": "テスト用の画像データ",
-            },
-        )
-
-    @pytest.fixture
-    def mock_vectorizer(self):
-        """画像ベクトル化モジュールのモック"""
-        vectorizer = Mock(spec=ImageVectorizer)
-        vectorizer.vectorize.return_value = np.array([0.1, 0.2, 0.3])
-        return vectorizer
-
-    @pytest.fixture
-    def mock_pinecone_client(self):
-        """Pinecone クライアントのモック"""
-        return Mock(spec=PineconeClient)
-
     def test_image_registration_flow(
-        self, sample_item, mock_vectorizer, mock_pinecone_client
-    ):
+        self, sample_item: ImageItem, mock_vectorizer: Mock, mock_pinecone_client: Mock
+    ) -> None:
         """
         シナリオ: 画像とメタデータを登録する
         前提:
@@ -74,10 +50,11 @@ class TestItemRepository:
     """画像アイテムリポジトリの仕様"""
 
     @pytest.fixture
-    def sample_json_path(self, tmp_path):
+    def sample_json_path(self, tmp_path: Path) -> str:
         """テスト用の JSON ファイル"""
         json_file = tmp_path / "test_items.json"
-        json_file.write_text("""
+        json_file.write_text(
+            """
         {
             "items": [
                 {
@@ -92,10 +69,11 @@ class TestItemRepository:
                 }
             ]
         }
-        """)
+        """
+        )
         return str(json_file)
 
-    def test_load_items_from_json(self, sample_json_path):
+    def test_load_items_from_json(self, sample_json_path: str) -> None:
         """
         シナリオ: JSON ファイルから画像アイテムデータを読み込む
         前提:
@@ -122,7 +100,7 @@ class TestItemRepository:
 class TestImageVectorizer:
     """画像ベクトル化モジュールの仕様"""
 
-    def test_vectorize_image(self, tmp_path):
+    def test_vectorize_image(self, tmp_path: Path) -> None:
         """
         シナリオ: 画像をベクトル化する
         前提:

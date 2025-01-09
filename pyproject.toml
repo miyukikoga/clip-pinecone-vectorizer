@@ -5,6 +5,7 @@ description = "コイン画像とメタデータの登録システム"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "mypy>=1.14.1",
     "numpy<2",
     "pillow>=11.1.0",
     "pinecone>=5.4.2",
@@ -24,7 +25,7 @@ test = [
 
 [tool.setuptools.packages.find]
 where = ["src"]  # srcディレクトリ以下をパッケージとして認識
-include = ["coin_register*"]  # coin_registerで始まるパッケージを含める
+include = ["image_register*"]  # image_registerで始まるパッケージを含める
 
 [tool.pytest.ini_options]
 pythonpath = "src"  # テスト実行時にsrcディレクトリをPythonパスに追加
@@ -41,3 +42,14 @@ torchvision = [
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
 explicit = true
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+warn_return_any = true
+warn_unused_configs = true
+warn_unreachable = true
+strict_optional = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+check_untyped_defs = true

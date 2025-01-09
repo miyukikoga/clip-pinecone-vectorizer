@@ -1,16 +1,16 @@
 import json
-from typing import List
+from typing import List, Any, Dict
 from ..domain.models import ImageItem
 
 
 class ItemRepository:
-    def __init__(self, file_path: str):
+    def __init__(self, file_path: str) -> None:
         self.file_path = file_path
 
     def load_all(self) -> List[ImageItem]:
         """JSONファイルから画像アイテムデータを読み込む"""
         with open(self.file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+            data: Dict[str, List[Dict[str, Any]]] = json.load(f)
         return [
             ImageItem(
                 image_path=item["image_path"],

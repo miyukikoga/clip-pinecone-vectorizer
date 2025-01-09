@@ -104,11 +104,14 @@ make test
 2. BDD スタイルのテスト記述
 3. 型ヒントの活用
 4. docstring によるドキュメント化
-5. コードフォーマット
+5. コードフォーマットと型チェック
 
    ```bash
    # コードの自動フォーマット
    make format
+
+   # 型チェック
+   make typecheck
    ```
 
 ## 必要要件
@@ -122,3 +125,4 @@ make test
   - python-dotenv
   - numpy
   - ruff
+  - mypy

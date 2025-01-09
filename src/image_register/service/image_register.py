@@ -4,7 +4,7 @@ from ..infrastructure.pinecone_client import PineconeClient
 
 
 class ImageRegisterService:
-    def __init__(self, vectorizer: ImageVectorizer, pinecone_client: PineconeClient):
+    def __init__(self, vectorizer: ImageVectorizer, pinecone_client: PineconeClient) -> None:
         self.vectorizer = vectorizer
         self.pinecone_client = pinecone_client
 
