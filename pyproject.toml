@@ -7,10 +7,12 @@ requires-python = ">=3.12"
 dependencies = [
     "mypy>=1.14.1",
     "numpy<2",
+    "onnxruntime>=1.20.1",
     "pillow>=11.1.0",
     "pinecone>=5.4.2",
     "pytest>=8.3.4",
     "python-dotenv>=1.0.1",
+    "rembg>=2.0.61",
     "ruff>=0.8.6",
     "torch<2.3.0",
     "torchvision<2.3.0",
